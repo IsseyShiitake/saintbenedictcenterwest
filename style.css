@@ -1,0 +1,310 @@
+/* =============================================
+   SAINT BENEDICT CENTER WEST — SHARED STYLES
+   Aesthetic: Sacred / Editorial / Refined
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --parchment:   #f5f0e8;
+  --cream:       #faf7f2;
+  --ink:         #1a1610;
+  --ink-soft:    #3d3628;
+  --ink-muted:   #7a6e5f;
+  --gold:        #b8963e;
+  --gold-light:  #d4b06a;
+  --gold-pale:   #ede0c4;
+  --rule:        #c8b896;
+  --red-sacred:  #8b1a1a;
+
+  --font-display: 'Cinzel', serif;
+  --font-body:    'EB Garamond', serif;
+  --font-italic:  'Cormorant Garamond', serif;
+
+  --nav-height: 72px;
+  --max-width: 960px;
+  --section-gap: 5rem;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography ── */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+h2 { font-size: clamp(1.3rem, 2.5vw, 1.75rem); }
+h3 { font-size: 1.1rem; }
+
+p { color: var(--ink-soft); max-width: 65ch; }
+em { font-family: var(--font-italic); font-style: italic; color: var(--red-sacred); }
+
+a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--red-sacred); }
+
+/* ── Ornamental Rule ── */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  color: var(--gold);
+}
+.ornament::before,
+.ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rule), transparent);
+}
+
+/* ── Navigation ── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  border-bottom: 1px solid var(--gold);
+}
+
+nav {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1.3;
+}
+
+nav > div {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+nav a {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--parchment);
+  transition: color 0.2s;
+}
+
+nav a:hover { color: var(--gold-light); }
+
+/* ── Page Hero ── */
+.page-hero {
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,150,62,0.12) 0%, transparent 70%);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(184,150,62,0.3);
+}
+
+.page-hero h1 {
+  color: var(--parchment);
+  margin-bottom: 0.5rem;
+}
+
+.page-hero .subtitle {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.page-hero .cross {
+  color: var(--gold);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5em;
+}
+
+/* ── Main Content Sections ── */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: var(--section-gap) 0;
+  border-bottom: 1px solid var(--gold-pale);
+}
+
+section:last-of-type { border-bottom: none; }
+
+.section-label {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+/* ── CTA Button ── */
+.cta {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink) !important;
+  background: var(--gold);
+  border: none;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+}
+
+.cta:hover {
+  background: var(--gold-light);
+  color: var(--ink) !important;
+  transform: translateY(-1px);
+}
+
+/* ── Newsletter / Contact Section ── */
+.contact-section {
+  background: var(--parchment);
+  border-radius: 2px;
+  padding: 3.5rem 2.5rem !important;
+  margin-top: 1rem;
+  border: 1px solid var(--rule) !important;
+  text-align: center;
+}
+
+.contact-section h2 {
+  margin-bottom: 0.3rem;
+}
+
+.contact-section .tagline {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.form-name-email {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 200px;
+  flex: 1;
+  max-width: 280px;
+  text-align: left;
+}
+
+label {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+input[type="text"],
+input[type="email"] {
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  padding: 0.6rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: var(--gold);
+}
+
+input[type="submit"].cta {
+  margin-top: 0.5rem;
+}
+
+/* ── Footer ── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid var(--gold);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+footer > div {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+footer a {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  transition: color 0.2s;
+}
+
+footer a:hover { color: var(--gold); }
+
+.footer-copy {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  font-family: var(--font-italic);
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  nav > div { gap: 1rem; }
+  nav a { font-size: 0.62rem; letter-spacing: 0.1em; }
+  .form-name-email { flex-direction: column; align-items: center; }
+  .contact-section { padding: 2.5rem 1.25rem !important; }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>About Us — Saint Benedict Center West</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    .about-grid p { margin-bottom: 1.2rem; }
+
+    .sidebar-card {
+      background: var(--ink);
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--gold);
+      color: var(--parchment);
+    }
+    .sidebar-card h3 {
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .sidebar-card p {
+      color: rgba(245,240,232,0.75);
+      font-size: 0.95rem;
+      max-width: none;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    .sidebar-card a { color: var(--gold-light); }
+
+    .founders {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .founder-name {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+    .founder-role {
+      font-family: var(--font-italic);
+      font-style: italic;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a class="nav-brand" href="index.html">Saint Benedict<br>Center West</a>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="news.html">USEFUL RESOURCES</a>
+        <a href="donations.html">Donations</a>
+        <a href="contact.html">Write to Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <div class="cross">✠</div>
+    <h1>About Us</h1>
+    <p class="subtitle">Slaves of the Immaculate Heart of Mary</p>
+  </div>
+
+  <main>
+    <section>
+      <div class="about-grid">
+        <div>
+          <p class="section-label">Our History</p>
+          <h2>Founded in Faith</h2>
+
+          <p>The <em>Slaves of the Immaculate Heart of Mary</em> were founded in 1949 by Fr. Leonard Feeney, SJ, and Catherine Goddard Clarke, OSB Oblate — two souls whose consuming passion was to proclaim the fullness of the Catholic Faith without compromise or apology.</p>
+
+          <p>At the heart of our community is a simple conviction: either the Catholic Faith is for <em>all</em>, or it is for none. Truth does not yield to sentiment; God's mercy is not indifferent to what one believes.</p>
+
+          <p>Just because we attend the traditional pre-1964 liturgies does not mean we neglect our spiritual studies. The ancient rites form us; our doctrinal life fills us. Piety without doctrine is incomplete, as is doctrine without the grace of the sacraments.</p>
+
+          <p>Sincerity alone is not sufficient for salvation. We must believe all that <em>God</em> has revealed — through Scripture, Tradition, and the infallible teaching of the Church — and we must <em>act</em> accordingly. Our houses exist to help souls do exactly that.</p>
+
+          <div class="founders">
+            <div>
+              <p class="founder-name">Fr. Leonard Feeney, SJ</p>
+              <p class="founder-role">Co-Founder · 1897–1978</p>
+            </div>
+            <div>
+              <p class="founder-name">Catherine Goddard Clarke</p>
+              <p class="founder-role">Co-Founder, OSB Oblate</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="sidebar-card">
+            <h3>Our Houses</h3>
+            <p>We operate five houses across the United States, each dedicated to the apostolate of the Immaculate Heart of Mary. <a href="contact.html">See all locations →</a></p>
+          </div>
+          <div class="sidebar-card" style="margin-top:1.5rem; background:var(--parchment); color:var(--ink);">
+            <h3 style="color:var(--gold);">Our Liturgy</h3>
+            <p style="color:var(--ink-soft);">We celebrate the traditional Roman Rite — the Mass and Divine Office as they were offered prior to 1964 — as the living expression of Catholic worship.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>
+      <a href="about-us.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="donations.html">Donations</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <p class="footer-copy">© Saint Benedict Center West · Arcadia, CA</p>
+  </footer>
+
+</body>
+</html>

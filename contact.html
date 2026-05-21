@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contact — Saint Benedict Center West</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .houses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .house-card {
+      border: 1px solid var(--rule);
+      padding: 1.75rem;
+      background: var(--parchment);
+      position: relative;
+    }
+
+    .house-card::before {
+      content: '✠';
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      color: var(--gold);
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    .house-name {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .house-card address {
+      font-style: normal;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .house-card address a {
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    .house-card .phone {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
+      margin-top: 0.5rem;
+    }
+
+    .house-card.special {
+      background: var(--ink);
+      border-color: var(--gold);
+    }
+    .house-card.special .house-name { color: var(--gold); }
+    .house-card.special address { color: rgba(245,240,232,0.7); }
+    .house-card.special .phone { color: var(--gold-light); }
+
+    .publishers-section p { margin-bottom: 0.8rem; }
+    .publishers-section .pub-entry {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--gold-pale);
+    }
+    .pub-name {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+    .pub-details {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a class="nav-brand" href="index.html">Saint Benedict<br>Center West</a>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="news.html">USEFUL RESOURCES</a>
+        <a href="donations.html">Donations</a>
+        <a href="contact.html">Write to Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <div class="cross">✠</div>
+    <h1>Write to Us</h1>
+    <p class="subtitle">Our five houses welcome serious correspondence</p>
+  </div>
+
+  <main>
+    <section>
+      <p class="section-label">Our Locations</p>
+      <h2>Five Houses</h2>
+      <p>There are five houses across the United States. Each is dedicated to the apostolate of the Slaves of the Immaculate Heart of Mary. Correspondence is warmly welcomed.</p>
+
+      <div class="houses-grid">
+
+        <div class="house-card">
+          <p class="house-name">St. Augustine Institute</p>
+          <address>
+            Box 627<br>
+            Richmond, NH 03470<br>
+            95 Martin Road<br>
+            <a href="http://www.catholicism.org" target="_blank" rel="noopener">catholicism.org</a>
+          </address>
+          <p class="phone">603-239-6485</p>
+        </div>
+
+        <div class="house-card">
+          <p class="house-name">St. Ann House</p>
+          <address>
+            Box 22<br>
+            Harvard, MA 01451<br>
+            254 Still River Road<br>
+            <a href="http://www.sistersofstbeneditctcenter.org" target="_blank" rel="noopener">sistersofstbenedictcenter.org</a>
+          </address>
+          <p class="phone">978-456-8017</p>
+        </div>
+
+        <div class="house-card">
+          <p class="house-name">St. Anthony House</p>
+          <address>
+            Box 1000<br>
+            Harvard, MA 01451<br>
+            282 Still River Road<br>
+            <a href="http://www.saintbenedict.com" target="_blank" rel="noopener">saintbenedict.com</a>
+          </address>
+          <p class="phone">978-456-8296</p>
+        </div>
+
+        <div class="house-card">
+          <p class="house-name">Saint-Pius House</p>
+          <address>
+            Box 524<br>
+            Vienna, OH 44473<br>
+            <a href="http://www.sihm.org" target="_blank" rel="noopener">website</a>
+          </address>
+          <p class="phone">330-856-9837</p>
+        </div>
+
+        <div class="house-card special">
+          <p class="house-name">St. Benedict Center West</p>
+          <address>
+            Box 660771<br>
+            Arcadia, CA 91066
+          </address>
+          <p class="phone" style="margin-top:0.75rem; font-style: italic; font-family: var(--font-italic); font-size:0.88rem; letter-spacing:0.02em; color:rgba(212,176,106,0.85);">
+            Contact by US Mail only.<br>Serious inquiries welcome.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer>
+    <div>
+      <a href="about-us.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="donations.html">Donations</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <p class="footer-copy">© Saint Benedict Center West · Arcadia, CA</p>
+  </footer>
+
+</body>
+</html>

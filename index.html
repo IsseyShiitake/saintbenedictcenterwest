@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Home — Saint Benedict Center West</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Hero ── */
+    .site-hero {
+      position: relative;
+      background-color: var(--ink);
+      background-image:
+        radial-gradient(ellipse 100% 70% at 50% 0%, rgba(184,150,62,0.15) 0%, transparent 65%);
+      padding: 8rem 2rem 6rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .site-hero::before {
+      content: '✠';
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gold);
+      font-size: 1.5rem;
+      letter-spacing: 0.4em;
+    }
+
+    .site-hero h1 {
+      color: var(--parchment);
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .site-hero .hero-subtitle {
+      font-family: var(--font-italic);
+      font-style: italic;
+      color: var(--gold-light);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.03em;
+    }
+
+    .site-hero .hero-rule {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 2.5rem;
+    }
+
+    .site-hero p {
+      color: rgba(245,240,232,0.7);
+      max-width: 52ch;
+      margin: 0 auto 2.5rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    /* ── Combined two-column layout ── */
+    .combined-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 680px) {
+      .combined-section { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    .combined-left h2,
+    .combined-right h2 { margin-bottom: 1rem; }
+
+    .combined-left p,
+    .combined-right p  { margin-bottom: 1.25rem; }
+
+    /* ── Excerpts ── */
+    .excerpt-block { max-width: none; }
+
+    .excerpt-chapter {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .excerpt-quote {
+      border-left: 2px solid var(--gold-pale);
+      padding: 0.4rem 0 0.4rem 1.25rem;
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--ink-soft);
+      line-height: 1.8;
+      max-width: none;
+    }
+
+    .excerpt-ref {
+      font-style: normal;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+    }
+
+    .quote-block {
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem 1.5rem;
+      background: var(--parchment);
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+    .quote-block cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      font-style: normal;
+      font-family: var(--font-display);
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+    }
+
+    .book-availability {
+      margin-top: 3rem;
+      max-width: 520px;
+    }
+
+    .book-avail-inner {
+      border: 1px solid var(--rule);
+      padding: 1.5rem 1.75rem;
+      background: var(--parchment);
+    }
+
+    .book-avail-title {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      margin-bottom: 0.3rem;
+      max-width: none;
+    }
+
+    .book-avail-publisher {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .book-avail-address {
+      font-style: normal;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .book-avail-note {
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      max-width: none;
+      border-top: 1px solid var(--gold-pale);
+      padding-top: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ── Questions Section ── */
+    .questions-section { background: var(--cream); }
+
+    .questions-frame {
+      border: 1px solid var(--rule);
+      background: var(--parchment);
+      padding: 3rem 3.5rem;
+      max-width: 820px;
+    }
+
+    @media (max-width: 680px) {
+      .questions-frame { padding: 2rem 1.5rem; }
+    }
+
+    .questions-list {
+      list-style: none;
+      counter-reset: q-counter;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .questions-list li {
+      counter-increment: q-counter;
+      position: relative;
+      padding-left: 2.5rem;
+      color: var(--ink-soft);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: none;
+    }
+
+    .questions-list li::before {
+      content: counter(q-counter) ".";
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      width: 2rem;
+      text-align: right;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+    }
+
+    .question-note {
+      display: block;
+      margin-top: 0.5rem;
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a class="nav-brand" href="index.html">Saint Benedict<br>Center West</a>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="news.html">USEFUL RESOURCES</a>
+        <a href="donations.html">Donations</a>
+        <a href="contact.html">Write to Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="site-hero">
+    <h1>Saint Benedict Center West</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-subtitle">Slaves of the Immaculate Heart of Mary</p>
+    <p>A community devoted to the fullness of the Catholic Faith — traditional liturgy, serious doctrine, and sincere devotion.</p>
+    <a href="contact.html" class="cta">Write to Us</a>
+  </div>
+
+  <main>
+    <section>
+      <div class="combined-section">
+
+        <!-- Left: Mission + Feeney quote -->
+        <div class="combined-left">
+          <p class="section-label">Our Mission</p>
+          <h2>The Slaves of the Immaculate Heart of Mary</h2>
+          <p>Founded in 1949 by Fr. Leonard Feeney, SJ, and Catherine Goddard Clarke, OSB Oblate, our community holds that the Catholic Faith is for <em>all</em> — or for none.</p>
+          <p>Just because we attend pre-1964 liturgies does not mean we neglect our spiritual studies. Sincerity alone is not enough for salvation. We must believe all that <em>God</em> has revealed, and act accordingly.</p>
+          <a href="about-us.html" class="cta" style="margin-top:0.5rem; margin-bottom: 1.75rem; display:inline-block;">Learn More</a>
+
+          <blockquote class="quote-block">
+            "No salvation outside the Church" is not a threat — it is the most serious and merciful declaration God could make to a world that needs Him.
+            <cite>— Fr. Leonard Feeney, SJ</cite>
+          </blockquote>
+        </div>
+
+        <!-- Right: Bread of Life excerpts -->
+        <div class="combined-right">
+          <p class="section-label">Bread of Life</p>
+          <h2>From the Book</h2>
+
+          <div class="excerpt-block">
+            <div class="excerpt-chapter">Chapter 8</div>
+            <blockquote class="excerpt-quote">
+              "A real Catholic says that the challenge of salvation is absolute, whether the statistics please you or not. Some statistics say that there are three hundred and seventy-five million Catholics in the world. I doubt if the number is that high, but by pushing figures you might get within sight of it. When I was in the seminary, the conjectured number was about three hundred and thirty-five million."
+            </blockquote>
+            <blockquote class="excerpt-quote" style="margin-top: 1.25rem;">
+              "Saying fast that there is no salvation outside the Church, and then adding that sincerity outside the Church is salvation within the Church, is the most diabolical double-talk ever uttered in the name of religious teaching!"
+            </blockquote>
+          </div>
+
+          <div class="excerpt-block" style="margin-top: 1.75rem;">
+            <div class="excerpt-chapter">Chapter 11</div>
+            <blockquote class="excerpt-quote">
+              "What doth it profit a man, if he gain the whole world, and suffer the loss of his own soul?" <span class="excerpt-ref">(Matt. 16:26)</span> I think that this statement of Our Lord's is strong enough to imply in its challenge: "What good does it do if everybody gets into Heaven, if you do not get in?"
+            </blockquote>
+          </div>
+
+          <div class="book-availability">
+            <div class="book-avail-inner">
+              <p class="book-avail-title"><em>Bread of Life</em> is available from</p>
+              <p class="book-avail-publisher">Manicipia Press</p>
+              <address class="book-avail-address">
+                Box 1000 · Harvard, MA 01451<br>
+                978-456-8296 ·
+                <a href="https://www.saintbenedict.com" target="_blank" rel="noopener">saintbenedict.com</a>
+              </address>
+              <p class="book-avail-note">The book has gone through several editions; the page number is not always the same. You have the chapter numbers, and you should go through <em>all</em> of them "with a fine-toothed comb."</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Questions to Consider ── -->
+    <section class="questions-section">
+      <div class="questions-frame">
+        <p class="section-label" style="text-align:center;">For Reflection</p>
+        <h2 style="text-align:center; margin-bottom: 2rem;">Questions to Consider</h2>
+        <ol class="questions-list">
+          <li>Why did the Church (<em>Everywhere Ekklesia Katholika / Ekklesia Katholes</em>) preserve the Bible for 1,000-plus years, so that all the old texts — except the Dead Sea Scrolls (discovered 1946–65) — came through her auspices?</li>
+          <li>If the Catholic Church is wrong, why do the Dead Sea Scrolls agree with what she accepted rather than with the first-century rabbis or the 16th-century rebels? <span class="question-note">In 90 A.D. the Rabbinical Council of Jamnia (now Tel-Aviv, Israel) rejected 7 Old Testament books, claiming they were not originally written in Hebrew. The Dead Sea Scrolls proved those rabbis wrong. The 16th-century rebels followed the rabbis' lead in order to sidestep the authority of the Catholic Church.</span></li>
+          <li>If Catholicism is wrong, how can we have <em>any</em> New Testament, since all its books were collected and chosen by the Roman Pontiff — cf. Council of Rome, 382 A.D.; Muratorian Fragment?</li>
+          <li>Why did the protest giving its name to Protestantism — the historical nickname of the Bible-only error held by the 16th-century rebels — include these words: <em>"We could not, in good conscience, let anyone decide — for himself — what Church he will attend?"</em></li>
+          <li>Since every old rite — in or out of communion with Rome — takes <em>"This is My Body… Blood"</em> (Matt. 26:26–28) literally, can anyone think Protestants are right to deny this?</li>
+          <li>Where, in the Bible, does it say <em>Saved by Faith Alone?</em> Nowhere. Cf. James 2:26; Philippians 2:12.</li>
+          <li>Where does the Bible call itself the sole rule of Faith? Nowhere.</li>
+          <li>Where does the Bible say which books comprise the Bible? Nowhere.</li>
+          <li>Why does the Bible say nothing about "taking Christ as personal savior," but <em>does</em> speak of Christ as Savior of His Body? Cf. Ephesians 5:23.</li>
+          <li>Christ gave Peter authority (Matt. 16:18–20). Where did Luther, Calvin, and others get <em>their</em> authority?</li>
+          <li>Into how many sects must Protestantism divide before proving itself unable to show how Christians are identified?</li>
+          <li>How can we have God for Our Father, without Mary for Our Mother?</li>
+          <li>Why is the Church so important? Cf. Matt. 18:17.</li>
+          <li>Which came first — Church or Bible? <span class="question-note">The Children of Israel existed before Moses wrote the first 5 Old Testament books. The Catholic Church existed 10 years before Matthew wrote the first line of the New Testament.</span></li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>
+      <a href="about-us.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="donations.html">Donations</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <p class="footer-copy">© Saint Benedict Center West · Arcadia, CA</p>
+  </footer>
+
+</body>
+</html>

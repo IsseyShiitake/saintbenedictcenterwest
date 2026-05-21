@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Donations — Saint Benedict Center West</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .donate-layout {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 680px) {
+      .donate-layout { grid-template-columns: 1fr; }
+    }
+    .donate-layout p { margin-bottom: 1.1rem; }
+    .donate-info {
+      background: var(--ink);
+      border: 1px solid var(--gold);
+      padding: 2rem 1.75rem;
+    }
+    .donate-info h3 {
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .donate-info address {
+      font-style: normal;
+      color: rgba(245,240,232,0.8);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .donate-info .note {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(184,150,62,0.3);
+      font-family: var(--font-italic);
+      font-style: italic;
+      color: var(--gold-light);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a class="nav-brand" href="index.html">Saint Benedict<br>Center West</a>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="news.html">USEFUL RESOURCES</a>
+        <a href="donations.html">Donations</a>
+        <a href="contact.html">Write to Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <div class="cross">✠</div>
+    <h1>Support Our Work</h1>
+    <p class="subtitle">Help us proclaim the fullness of the Faith</p>
+  </div>
+
+  <main>
+    <section>
+      <div class="donate-layout">
+        <div>
+          <p class="section-label">Donations</p>
+          <h2>A Work Worth Supporting</h2>
+          <p>The work of the Slaves of the Immaculate Heart of Mary depends entirely upon the generosity of those who share our conviction that the Catholic Faith must be proclaimed without compromise.</p>
+          <p>Your donation supports the maintenance of our houses, the printing and distribution of doctrinal literature, and the daily life of a community wholly consecrated to the Immaculate Heart of Mary.</p>
+          <p>All donations are gratefully received and prayerfully applied to the apostolate. Please make checks payable to <strong>Saint Benedict Center West</strong> and post to our Arcadia address.</p>
+          <a href="contact.html" class="cta" style="margin-top: 0.5rem;">Contact Us First</a>
+        </div>
+        <div>
+          <div class="donate-info">
+            <h3>Send Donations To</h3>
+            <address>
+              Saint Benedict Center West<br>
+              Box 660771<br>
+              Arcadia, CA 91066
+            </address>
+            <p class="note">Checks payable to Saint Benedict Center West. For questions, contact us by mail.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>
+      <a href="about-us.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="donations.html">Donations</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <p class="footer-copy">© Saint Benedict Center West · Arcadia, CA</p>
+  </footer>
+
+</body>
+</html>
