@@ -6,6 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ── QR Codes ── */
+    .qr-row {
+      display: flex;
+      gap: 4rem;
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 4rem;
+    }
+    .qr-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .qr-item img {
+      width: 240px;
+      height: 240px;
+      object-fit: contain;
+      display: block;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid var(--rule);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .qr-label {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+    }
+
+    /* ── Donate Layout ── */
     .donate-layout {
       display: grid;
       grid-template-columns: 3fr 2fr;
@@ -14,7 +48,13 @@
     }
     @media (max-width: 680px) {
       .donate-layout { grid-template-columns: 1fr; }
+      .qr-row { gap: 2rem; }
+      .qr-item img { width: 160px; height: 160px; }
     }
+    @media (max-width: 420px) {
+      .qr-row { flex-direction: column; align-items: center; }
+    }
+
     .donate-layout p { margin-bottom: 1.1rem; }
     .donate-info {
       background: var(--ink);
@@ -69,6 +109,20 @@
 
   <main>
     <section>
+
+      <!-- QR Codes — centered, full width, above everything -->
+      <div class="qr-row">
+        <div class="qr-item">
+          <img src="donate-qr.png" alt="QR code — Donate to St. Benedict Center West via PayPal">
+          <span class="qr-label">PayPal</span>
+        </div>
+        <div class="qr-item">
+          <img src="zelle-qr.png" alt="QR code — Zelle: Saint Benedict Center West / st-benedict-center-west">
+          <span class="qr-label">Zelle</span>
+        </div>
+      </div>
+
+      <!-- Text + Address -->
       <div class="donate-layout">
         <div>
           <p class="section-label">Donations</p>
@@ -76,7 +130,6 @@
           <p>The work of the Slaves of the Immaculate Heart of Mary depends entirely upon the generosity of those who share our conviction that the Catholic Faith must be proclaimed without compromise.</p>
           <p>Your donation supports the maintenance of our houses, the printing and distribution of doctrinal literature, and the daily life of a community wholly consecrated to the Immaculate Heart of Mary.</p>
           <p>All donations are gratefully received and prayerfully applied to the apostolate. Please make checks payable to <strong>Saint Benedict Center West</strong> and post to our Arcadia address.</p>
-          <a href="contact.html" class="cta" style="margin-top: 0.5rem;">Contact Us First</a>
         </div>
         <div>
           <div class="donate-info">
@@ -90,8 +143,8 @@
           </div>
         </div>
       </div>
-    </section>
 
+    </section>
   </main>
 
   <footer>

@@ -47,15 +47,63 @@
       width: 120px;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 0 auto 2.5rem;
+      margin: 0 auto 3rem;
     }
 
     .site-hero p {
       color: rgba(245,240,232,0.7);
       max-width: 52ch;
-      margin: 0 auto 2.5rem;
+      margin: 0 auto 2rem;
       font-size: 1.05rem;
       line-height: 1.8;
+    }
+
+    /* ── Hero two-column body ── */
+    .hero-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0rem;
+      max-width: 860px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-image-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-img {
+      width: clamp(200px, 34vw, 340px);
+      height: auto;
+      display: block;
+      border: 1px solid rgba(184,150,62,0.35);
+      box-shadow: 0 0 40px rgba(184,150,62,0.12);
+    }
+
+    .hero-text-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-text-col p {
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 32ch;
+    }
+
+    .hero-text-col .hero-subtitle {
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero-body {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
     }
 
     /* ── Combined two-column layout ── */
@@ -245,8 +293,17 @@
   <div class="site-hero">
     <h1>Saint Benedict Center West</h1>
     <div class="hero-rule"></div>
-    <p class="hero-subtitle">Slaves of the Immaculate Heart of Mary</p>
-    <p>A community devoted to the fullness of the Catholic Faith — traditional liturgy, serious doctrine, and sincere devotion.</p>
+    <div class="hero-body">
+      <div class="hero-image-col">
+        <img src="friar-thomas-aquinas.png"
+             alt="Friar Brother Thomas Aquinas — Todavia en la calle. Todavia sirviendo."
+             class="hero-img">
+      </div>
+      <div class="hero-text-col">
+        <p class="hero-subtitle">Slaves of the Immaculate Heart of Mary</p>
+        <p>A community devoted to the fullness of the Catholic Faith — traditional liturgy, serious doctrine, and sincere devotion.</p>
+      </div>
+    </div>
     <a href="contact.html" class="cta">Write to Us</a>
   </div>
 
