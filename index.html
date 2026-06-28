@@ -273,6 +273,45 @@
       color: var(--ink-muted);
       line-height: 1.65;
     }
+
+    /* ── QR Codes ── */
+    .qr-row {
+      display: flex;
+      gap: 4rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .qr-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .qr-item img {
+      width: 240px;
+      height: 240px;
+      object-fit: contain;
+      display: block;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid var(--rule);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .qr-label {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+    }
+    @media (max-width: 680px) {
+      .qr-row { gap: 2rem; }
+      .qr-item img { width: 160px; height: 160px; }
+    }
+    @media (max-width: 420px) {
+      .qr-row { flex-direction: column; align-items: center; }
+    }
   </style>
 </head>
 <body>
@@ -361,6 +400,22 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ── QR Codes ── -->
+    <section style="text-align:center;">
+      <p class="section-label" style="text-align:center;">Support Our Work</p>
+      <h2 style="margin-bottom: 2rem;">Donate</h2>
+      <div class="qr-row">
+        <div class="qr-item">
+          <img src="donate-qr.png" alt="QR code — Donate to St. Benedict Center West via PayPal">
+          <span class="qr-label">PayPal</span>
+        </div>
+        <div class="qr-item">
+          <img src="zelle-qr.png" alt="QR code — Zelle: Saint Benedict Center West / st-benedict-center-west">
+          <span class="qr-label">Zelle</span>
+        </div>
       </div>
     </section>
 
