@@ -4,5 +4,5 @@ Developed and used to spread their work and the word, as well as to facilitate d
 Charity Project
 
 Site web officiel de la communauté Chrétienne Saint Benedict Center West, Los Angeles. 
-Développé et publié dans le but de faciliter le partage de leur foi et leur travail, ainsi que faciliter les dons afin que leurs initiatives et leur travail puisse être durable. 
+Développé et publié dans le but de faciliter le partage de leur foi et leur travail, ainsi que faciliter les dons afin que leurs initiatives et leurs actions puissent être durables. 
 Project Caritatif
