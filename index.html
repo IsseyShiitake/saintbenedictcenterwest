@@ -76,14 +76,17 @@
       flex-direction: column;
     }
 
+    .combined-left { gap: 2.5rem; }
+
     .combined-left h2,
-    .combined-right h2 { margin-bottom: 1.5rem; }
+    .combined-right h2 { margin-bottom: 0; }
 
     .combined-left p,
     .combined-right p  { margin-bottom: 1.75rem; }
 
-    .combined-left .section-label { margin-bottom: 1rem; }
-    .combined-left .quote-block   { margin-top: 1rem; }
+    .combined-left > p  { margin-bottom: 0; }
+    .combined-left .section-label { margin-bottom: 0; }
+    .combined-left .quote-block   { margin-top: 0; }
 
     /* ── Excerpts ── */
     .excerpt-block { max-width: none; }
@@ -319,7 +322,7 @@
           <h2>The Slaves of the Immaculate Heart of Mary</h2>
           <p>Founded in 1949 by Fr. Leonard Feeney, SJ, and Catherine Goddard Clarke, OSB Oblate, our community holds that the Catholic Faith is for <em>all</em> — or for none.</p>
           <p>Just because we attend pre-1964 liturgies does not mean we neglect our spiritual studies. Sincerity alone is not enough for salvation. We must believe all that <em>God</em> has revealed, and act accordingly.</p>
-          <a href="about-us.html" class="cta" style="margin-top:0.5rem; margin-bottom: 2.5rem; display:inline-block;">Learn More</a>
+          <a href="about-us.html" class="cta" style="display:inline-block; align-self:flex-start;">Learn More</a>
 
           <blockquote class="quote-block">
             "No salvation outside the Church" is not a threat — it is the most serious and merciful declaration God could make to a world that needs Him.
