@@ -59,64 +59,21 @@
       line-height: 1.8;
     }
 
-    /* ── Hero two-column body ── */
-    .hero-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0rem;
-      max-width: 860px;
-      margin: 0 auto 2.5rem;
-    }
-
-    .hero-image-col {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-img {
-      width: clamp(200px, 34vw, 340px);
-      height: auto;
-      display: block;
-      border: 1px solid rgba(184,150,62,0.35);
-      box-shadow: 0 0 40px rgba(184,150,62,0.12);
-    }
-
-    .hero-text-col {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .hero-text-col p {
-      margin-left: 0;
-      margin-right: 0;
-      max-width: 32ch;
-    }
-
-    .hero-text-col .hero-subtitle {
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 640px) {
-      .hero-body {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-    }
-
-    /* ── Combined two-column layout ── */
     .combined-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
-      align-items: start;
+      align-items: stretch;
     }
 
     @media (max-width: 680px) {
       .combined-section { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    .combined-left,
+    .combined-right {
+      display: flex;
+      flex-direction: column;
     }
 
     .combined-left h2,
@@ -177,8 +134,9 @@
     }
 
     .book-availability {
-      margin-top: 3rem;
-      max-width: 520px;
+      margin-top: auto;
+      padding-top: 3rem;
+      max-width: none;
     }
 
     .book-avail-inner {
@@ -218,6 +176,16 @@
       border-top: 1px solid var(--gold-pale);
       padding-top: 0.9rem;
       line-height: 1.7;
+    }
+
+    /* ── Friar portrait (below Feeney quote) ── */
+    .friar-portrait {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-top: auto;
+      padding-top: 2.5rem;
     }
 
     /* ── Questions Section ── */
@@ -333,17 +301,8 @@
   <div class="site-hero">
     <h1>Saint Benedict Center West</h1>
     <div class="hero-rule"></div>
-    <div class="hero-body">
-      <div class="hero-image-col">
-        <img src="friar-thomas-aquinas.png"
-             alt="Friar Brother Thomas Aquinas — Todavia en la calle. Todavia sirviendo."
-             class="hero-img">
-      </div>
-      <div class="hero-text-col">
-        <p class="hero-subtitle">Slaves of the Immaculate Heart of Mary</p>
-        <p>A community devoted to the fullness of the Catholic Faith — traditional liturgy, serious doctrine, and sincere devotion.</p>
-      </div>
-    </div>
+    <p class="hero-subtitle">Slaves of the Immaculate Heart of Mary</p>
+    <p>A community devoted to the fullness of the Catholic Faith — traditional liturgy, serious doctrine, and sincere devotion.</p>
     <a href="contact.html" class="cta">Write to Us</a>
   </div>
 
@@ -363,6 +322,10 @@
             "No salvation outside the Church" is not a threat — it is the most serious and merciful declaration God could make to a world that needs Him.
             <cite>— Fr. Leonard Feeney, SJ</cite>
           </blockquote>
+
+          <img src="friar-thomas-aquinas.png"
+               alt="Friar Brother Thomas Aquinas — Todavia en la calle. Todavia sirviendo."
+               class="friar-portrait">
         </div>
 
         <!-- Right: Bread of Life excerpts -->
