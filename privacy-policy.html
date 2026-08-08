@@ -15,6 +15,9 @@
       margin-bottom: 0.5rem;
     }
     .policy-body p { margin-bottom: 1rem; font-size: 1rem; }
+    @media (max-width: 560px) {
+      .policy-body { padding: 1.75rem 1.5rem !important; }
+    }
   </style>
 </head>
 <body>
@@ -40,7 +43,7 @@
 
   <main>
     <section>
-      <div class="policy-body">
+      <div class="policy-body" style="background: var(--parchment); border: 1px solid var(--rule); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 2.75rem 3rem;">
         <p class="section-label">Last updated: 2025</p>
         <h2>Our Commitment to Your Privacy</h2>
 

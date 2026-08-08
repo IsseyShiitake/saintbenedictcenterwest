@@ -18,7 +18,15 @@
       border: 1px solid var(--rule);
       padding: 1.75rem;
       background: var(--parchment);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
       position: relative;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+
+    .house-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
 
     .house-card::before {
@@ -98,7 +106,7 @@
         <a href="about-us.html">About Us</a>
         <a href="news.html">USEFUL RESOURCES</a>
         <a href="donations.html">Donations</a>
-        <a href="contact.html">Write to Us</a>
+        <a href="contact.html" aria-current="page">Write to Us</a>
       </div>
     </nav>
   </header>

@@ -20,10 +20,20 @@
     .about-grid p { margin-bottom: 1.2rem; }
 
     .sidebar-card {
-      background: var(--ink);
+      background:
+        radial-gradient(ellipse 120% 80% at 50% 0%, rgba(184,150,62,0.14) 0%, transparent 65%),
+        var(--ink);
       padding: 2rem 1.75rem;
       border: 1px solid var(--gold);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
       color: var(--parchment);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+
+    .sidebar-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
     }
     .sidebar-card h3 {
       color: var(--gold);
@@ -68,7 +78,7 @@
       <a class="nav-brand" href="index.html">Saint Benedict<br>Center West</a>
       <div>
         <a href="index.html">Home</a>
-        <a href="about-us.html">About Us</a>
+        <a href="about-us.html" aria-current="page">About Us</a>
         <a href="news.html">USEFUL RESOURCES</a>
         <a href="donations.html">Donations</a>
         <a href="contact.html">Write to Us</a>
