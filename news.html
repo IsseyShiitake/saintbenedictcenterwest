@@ -133,6 +133,26 @@
       color: var(--gold);
     }
 
+    /* ── Scroll choreography between sections (same language as homepage) ── */
+    .scroll-part--hidden {
+      opacity: 0;
+      transform: translateX(-56px);
+    }
+    .scroll-part--visible {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    }
+    .scroll-part--leaving {
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      section.scroll-part--hidden,
+      section.scroll-part--visible,
+      section.scroll-part--leaving { opacity: 1 !important; transform: none !important; }
+    }
+
     @media (max-width: 700px) {
       .resource-table, .articles-table { font-size: 0.85rem; }
       .resource-table thead, .articles-table thead { display: none; }
@@ -169,7 +189,7 @@
   <main>
 
     <!-- ── Recommended Organizations, Publishers & Websites ── -->
-    <section>
+    <section id="recommended-organizations">
       <p class="section-label">For Further Reading</p>
       <h2>Recommended Organizations, Publishers &amp; Websites</h2>
       <p>Excellent - but not perfect - resources.</p>
@@ -395,7 +415,7 @@
     </section>
 
     <!-- ── Articles & Recommended Books ── -->
-    <section>
+    <section id="articles-and-books">
       <p class="section-label">Recommended Reading</p>
       <h2>Articles &amp; Books</h2>
       <p>Numbers in parentheses refer to the resource list above. Articles are listed first, followed by recommended books.</p>
@@ -562,6 +582,78 @@
     </div>
     <p class="footer-copy">© Saint Benedict Center West · Arcadia, CA</p>
   </footer>
+
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    /* Same scroll choreography as the homepage: each main section slides in
+       from the left as it enters the viewport, previous one fades out. */
+    var parts = Array.prototype.slice.call(document.querySelectorAll('main > section'));
+    if (!parts.length || !('IntersectionObserver' in window)) return;
+
+    var DELAY = 120;
+    parts.forEach(function (p, i) {
+      p.dataset.stagger = Math.min(i * DELAY, 480);
+    });
+
+    var reveal = function (el) {
+      if (!el.classList.contains('scroll-part--hidden')) return;
+      el.style.transitionDelay = el.dataset.stagger + 'ms';
+      el.classList.remove('scroll-part--hidden', 'scroll-part--leaving');
+      el.classList.add('scroll-part--visible');
+    };
+
+    var boot = function () {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) reveal(entry.target);
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+      parts.forEach(function (p) { io.observe(p); });
+
+      /* Fade out sections that have been scrolled past the top of viewport */
+      var LEAVE_RATIO = 0.6;
+      var onScroll = function () {
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        parts.forEach(function (p) {
+          var r = p.getBoundingClientRect();
+          var goneUp = r.bottom < vh * (1 - LEAVE_RATIO) && r.bottom > -r.height;
+          if (goneUp) {
+            if (p.classList.contains('scroll-part--visible')) {
+              p.style.transitionDelay = '0ms';
+              p.classList.remove('scroll-part--visible');
+              p.classList.add('scroll-part--leaving');
+            }
+          } else if (p.classList.contains('scroll-part--leaving') && r.top < vh) {
+            p.style.transitionDelay = '0ms';
+            p.classList.remove('scroll-part--leaving');
+            p.classList.add('scroll-part--visible');
+          }
+        });
+      };
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          setTimeout(function () { onScroll(); ticking = false; }, 90);
+        }
+      }, { passive: true });
+      onScroll();
+    };
+
+    if (window.requestAnimationFrame) {
+      requestAnimationFrame(function () {
+        parts.forEach(function (p) { p.classList.add('scroll-part', 'scroll-part--hidden'); });
+        requestAnimationFrame(boot);
+      });
+    } else {
+      parts.forEach(function (p) { p.classList.add('scroll-part', 'scroll-part--hidden'); });
+      boot();
+    }
+  })();
+  </script>
 
 </body>
 </html>
