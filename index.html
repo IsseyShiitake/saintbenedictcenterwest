@@ -5,7 +5,7 @@
   <title>Home — Saint Benedict Center West</title>
   <link rel="icon" type="img/png" href="templar_cross.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
   <style>
     /* ── Hero ── */
     .site-hero {
@@ -17,6 +17,12 @@
       padding: clamp(5.5rem, 12vw, 8.5rem) 2rem clamp(4rem, 9vw, 6rem);
       text-align: center;
       overflow: hidden;
+      min-height: calc(100vh - var(--nav-height));
+      min-height: calc(100svh - var(--nav-height));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .site-hero::before {
@@ -87,27 +93,8 @@
       margin: 0 auto 2.5rem;
     }
 
-    .combined-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: stretch;
-    }
-
-    @media (max-width: 680px) {
-      .combined-section { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
-
-    .combined-left,
-    .combined-right {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .combined-left h2,
     .combined-right h2 { margin-bottom: 1rem; }
 
-    .combined-left p,
     .combined-right p  { margin-bottom: 1.25rem; }
 
     /* ── Excerpts ── */
@@ -127,7 +114,7 @@
       padding: 0.4rem 0 0.4rem 1.25rem;
       font-family: var(--font-italic);
       font-style: italic;
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: var(--ink-soft);
       line-height: 1.8;
       max-width: none;
@@ -176,7 +163,15 @@
       max-width: none;
     }
 
+    /* V1 styling, but 25% longer, centered horizontally in the middle of the
+       screen regardless of the left/right text measure. Height stays fully
+       automatic (content-driven). */
     .book-avail-inner {
+      width: 70%;
+      max-width: calc(100vw - 2.5rem); /* guard: never overflow the viewport */
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
       border: 1px solid var(--rule);
       border-radius: var(--radius-md);
       padding: 1.6rem 1.85rem;
@@ -188,6 +183,7 @@
     }
 
     .book-avail-inner:hover {
+      /* subtle lift that keeps the box dead-center on the x-axis */
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
@@ -349,6 +345,120 @@
     @media (max-width: 420px) {
       .qr-row { flex-direction: column; align-items: center; }
     }
+  
+    /* ── Slaves part (Our Mission → Learn More), centered ── */
+    .slaves-part {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .slaves-part p {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1.25rem;
+    }
+    .slaves-part h2 { margin-bottom: 1rem; }
+
+    /* ── Feeney quote + friar portrait row (quote left, portrait right) ──
+           align-items: stretch makes the quote-block the same height as the
+           portrait; the portrait gets a fixed reserved width so the quote
+           isn't squeezed narrow by the unscaled intrinsic image size.        */
+    .feeney-row {
+      display: flex;
+      gap: 1.75rem;
+      align-items: stretch;
+      margin-top: 2.5rem;
+      text-align: left;
+    }
+    .feeney-row .quote-block {
+      flex: 1 1 0%;
+      margin-top: 0;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .feeney-row .quote-block > * { max-width: none; }
+    .feeney-row .friar-portrait {
+      flex: 0 0 300px;
+      max-width: 300px;
+      margin-top: 0;
+      align-self: center;
+    }
+
+    @media (max-width: 680px) {
+      .feeney-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .feeney-row .friar-portrait {
+        order: -1;
+        margin-top: 0;
+        max-width: 340px;
+        align-self: auto;
+      }
+      .feeney-row .quote-block { width: 100%; }
+    }
+
+    /* ── Questions: clamp to first 3 ── */
+    .questions-list.clamped li:nth-child(n+4) { display: none; }
+    .questions-list { transition: opacity 0.3s var(--ease); }
+    .questions-list.is-fading { opacity: 0; }
+
+    /* ── See more / unroll toggle ── */
+    .see-more-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      margin: 2.25rem auto 0;
+      padding: 0.5rem 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display);
+    }
+    .see-more-toggle .see-more-arrow {
+      display: block;
+      transition: transform 0.45s var(--ease);
+    }
+    .see-more-toggle[aria-expanded="true"] .see-more-arrow { transform: rotate(180deg); }
+    .see-more-toggle:hover .see-more-arrow {
+      transform: translateY(3px);
+      filter: drop-shadow(0 0 6px rgba(184,150,62,0.45));
+    }
+    .see-more-toggle[aria-expanded="true"]:hover .see-more-arrow { transform: rotate(180deg) translateY(3px); }
+    .see-more-text {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: color 0.25s var(--ease);
+    }
+    .see-more-toggle:hover .see-more-text { color: var(--gold-light); }
+
+    /* ── Scroll choreography (index only; hidden state applied by JS) ── */
+    .scroll-part--hidden {
+      opacity: 0;
+      transform: translateX(-56px);
+    }
+    .scroll-part--visible {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    }
+    .scroll-part--leaving {
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      section.scroll-part--hidden,
+      section.scroll-part--visible,
+      section.scroll-part--leaving { opacity: 1 !important; transform: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -377,17 +487,18 @@
   </div>
 
   <main>
-    <section>
-      <div class="combined-section">
-
-        <!-- Left: Mission + Feeney quote -->
-        <div class="combined-left">
+    <section class="slaves-part">
+        <!-- Mission -->
+        <div class="slaves-inner">
           <p class="section-label">Our Mission</p>
           <h2>The Slaves of the Immaculate Heart of Mary</h2>
           <p>Founded in 1949 by Fr. Leonard Feeney, SJ, and Catherine Goddard Clarke, OSB Oblate, our community holds that the Catholic Faith is for <em>all</em> — or for none.</p>
           <p>Just because we attend pre-1964 liturgies does not mean we neglect our spiritual studies. Sincerity alone is not enough for salvation. We must believe all that <em>God</em> has revealed, and act accordingly.</p>
-          <a href="about-us.html" class="cta" style="margin-top:0.5rem; margin-bottom: 1.75rem; display:inline-block;">Learn More</a>
+          <a href="about-us.html" class="cta" style="margin-top:0.5rem; display:inline-block;">Learn More</a>
 
+        </div><!-- /slaves-inner -->
+
+        <div class="feeney-row">
           <blockquote class="quote-block">
             "No salvation outside the Church" is not a threat — it is the most serious and merciful declaration God could make to a world that needs Him.
             <cite>— Fr. Leonard Feeney, SJ</cite>
@@ -396,10 +507,11 @@
           <img src="friar-thomas-aquinas.png"
                alt="Friar Brother Thomas Aquinas — Todavia en la calle. Todavia sirviendo."
                class="friar-portrait">
-        </div>
+        </div><!-- /feeney-row -->
+    </section>
 
-        <!-- Right: Bread of Life excerpts -->
-        <div class="combined-right">
+    <!-- Bread of Life excerpts -->
+    <section class="combined-right">
           <p class="section-label">Bread of Life</p>
           <h2>From the Book</h2>
 
@@ -432,13 +544,10 @@
               <p class="book-avail-note">The book has gone through several editions; the page number is not always the same. You have the chapter numbers, and you should go through <em>all</em> of them "with a fine-toothed comb."</p>
             </div>
           </div>
-        </div>
-
-      </div>
     </section>
 
     <!-- ── QR Codes ── -->
-    <section style="text-align:center;">
+    <section class="qr-part" style="text-align:center;">
       <p class="section-label" style="text-align:center;">Support Our Work</p>
       <h2 style="margin-bottom: 2rem;">Donate</h2>
       <div class="qr-row">
@@ -458,7 +567,7 @@
       <div class="questions-frame">
         <p class="section-label" style="text-align:center;">For Reflection</p>
         <h2 style="text-align:center; margin-bottom: 2rem;">Questions to Consider</h2>
-        <ol class="questions-list">
+        <ol class="questions-list clamped" id="questions-list">
           <li>Why did the Church (<em>Everywhere Ekklesia Katholika / Ekklesia Katholes</em>) preserve the Bible for 1,000-plus years, so that all the old texts — except the Dead Sea Scrolls (discovered 1946–65) — came through her auspices?</li>
           <li>If the Catholic Church is wrong, why do the Dead Sea Scrolls agree with what she accepted rather than with the first-century rabbis or the 16th-century rebels? <span class="question-note">In 90 A.D. the Rabbinical Council of Jamnia (now Tel-Aviv, Israel) rejected 7 Old Testament books, claiming they were not originally written in Hebrew. The Dead Sea Scrolls proved those rabbis wrong. The 16th-century rebels followed the rabbis' lead in order to sidestep the authority of the Catholic Church.</span></li>
           <li>If Catholicism is wrong, how can we have <em>any</em> New Testament, since all its books were collected and chosen by the Roman Pontiff — cf. Council of Rome, 382 A.D.; Muratorian Fragment?</li>
@@ -474,6 +583,23 @@
           <li>Why is the Church so important? Cf. Matt. 18:17.</li>
           <li>Which came first — Church or Bible? <span class="question-note">The Children of Israel existed before Moses wrote the first 5 Old Testament books. The Catholic Church existed 10 years before Matthew wrote the first line of the New Testament.</span></li>
         </ol>
+
+        <button type="button" class="see-more-toggle" aria-expanded="false" aria-controls="questions-list" title="Show the remaining questions">
+          <svg class="see-more-arrow" viewBox="0 0 48 54" width="48" height="54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="arrow-gold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#d4b06a"/>
+                <stop offset="0.55" stop-color="#b8963e"/>
+                <stop offset="1" stop-color="#8f722a"/>
+              </linearGradient>
+            </defs>
+            <line x1="24" y1="2" x2="24" y2="34" stroke="url(#arrow-gold)" stroke-width="1.4"/>
+            <rect x="20.6" y="9" width="6.8" height="6.8" transform="rotate(45 24 12.4)" fill="#b8963e"/>
+            <path d="M9 30 L24 45 L39 30" stroke="url(#arrow-gold)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 37 L24 48 L35 37" stroke="#d4b06a" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+          </svg>
+          <span class="see-more-text">See more</span>
+        </button>
       </div>
     </section>
 
@@ -489,5 +615,107 @@
     <p class="footer-copy">© Saint Benedict Center West · Arcadia, CA</p>
   </footer>
 
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ── See more / unroll toggle ── */
+    var toggle = document.querySelector('.see-more-toggle');
+    var qlist  = document.getElementById('questions-list');
+    if (toggle && qlist) {
+      var label = toggle.querySelector('.see-more-text');
+      toggle.addEventListener('click', function () {
+        var expanding = qlist.classList.contains('clamped');
+        toggle.setAttribute('aria-expanded', String(expanding));
+        var swap = function () {
+          qlist.classList.toggle('clamped', !expanding);
+          qlist.classList.remove('is-fading');
+        };
+        if (reduced) { swap(); }
+        else { qlist.classList.add('is-fading'); setTimeout(swap, 300); }
+        label.textContent = expanding ? 'See less' : 'See more';
+        toggle.title = expanding ? 'Collapse the list' : 'Show the remaining questions';
+      });
+    }
+
+    if (reduced) return;
+
+    /* ── Scroll choreography: leaving part fades away,
+          entering part fades in sliding from the left (JS-only hidden state) ── */
+    var parts = Array.prototype.slice.call(document.querySelectorAll('main > section'));
+    if (!parts.length || !('IntersectionObserver' in window)) return;
+
+    var DELAY = 120;
+    parts.forEach(function (p, i) {
+      p.classList.add('scroll-part');
+      p.classList.add('scroll-part--hidden');
+      p.dataset.stagger = Math.min(i * DELAY, 480);
+    });
+
+    var reveal = function (el) {
+      if (!el.classList.contains('scroll-part--hidden')) return;
+      el.style.transitionDelay = el.dataset.stagger + 'ms';
+      el.classList.remove('scroll-part--hidden', 'scroll-part--leaving');
+      el.classList.add('scroll-part--visible');
+    };
+    var conceal = function (el) {
+      el.style.transitionDelay = '0ms';
+      el.classList.remove('scroll-part--visible', 'scroll-part--leaving');
+      el.classList.add('scroll-part--hidden');
+    };
+
+    var boot = function () {
+      if (!('IntersectionObserver' in window)) {
+        parts.forEach(function (p) { p.classList.remove('scroll-part--hidden'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) reveal(entry.target);
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+      parts.forEach(function (p) { io.observe(p); });
+
+      /* Fade out sections that have left the top of the viewport */
+      var LEAVE_RATIO = 0.6;
+      var onScroll = function () {
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        parts.forEach(function (p) {
+          var r = p.getBoundingClientRect();
+          var goneUp = r.bottom < vh * (1 - LEAVE_RATIO) && r.bottom > -r.height;
+          if (goneUp) {
+            if (p.classList.contains('scroll-part--visible')) {
+              p.style.transitionDelay = '0ms';
+              p.classList.remove('scroll-part--visible');
+              p.classList.add('scroll-part--leaving');
+            }
+          } else if (p.classList.contains('scroll-part--leaving')) {
+            if (r.top < vh) {
+              p.style.transitionDelay = '0ms';
+              p.classList.remove('scroll-part--leaving');
+              p.classList.add('scroll-part--visible');
+            } else {
+              conceal(p);
+            }
+          }
+        });
+      };
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          setTimeout(function () { onScroll(); ticking = false; }, 90);
+        }
+      }, { passive: true });
+      onScroll();
+    };
+
+    if (window.requestAnimationFrame) {
+      requestAnimationFrame(function () { requestAnimationFrame(boot); });
+    } else {
+      boot();
+    }
+  })();
+  </script>
 </body>
 </html>
