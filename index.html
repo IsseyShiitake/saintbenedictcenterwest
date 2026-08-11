@@ -612,7 +612,7 @@
           <li>Which came first — Church or Bible? <span class="question-note">The Children of Israel existed before Moses wrote the first 5 Old Testament books. The Catholic Church existed 10 years before Matthew wrote the first line of the New Testament.</span></li>
         </ol>
 
-        <button type="button" class="see-more-toggle" aria-expanded="false" aria-controls="questions-list" title="Show the remaining questions">
+        <button type="button" id="questions-toggle" class="see-more-toggle" aria-expanded="false" aria-controls="questions-list" title="Show the remaining questions">
           <svg class="see-more-arrow" viewBox="0 0 48 54" width="48" height="54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <linearGradient id="arrow-gold" x1="0" y1="0" x2="0" y2="1">
@@ -648,7 +648,7 @@
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     /* ── See more / unroll toggle ── */
-    var toggle = document.querySelector('.see-more-toggle');
+    var toggle = document.getElementById('questions-toggle');
     var qlist  = document.getElementById('questions-list');
     if (toggle && qlist) {
       var label = toggle.querySelector('.see-more-text');
