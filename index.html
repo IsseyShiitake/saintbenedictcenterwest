@@ -403,8 +403,8 @@
 
     /* ── Questions: clamp to first 3 ── */
     .questions-list.clamped li:nth-child(n+4) { display: none; }
-    .questions-list { transition: opacity 0.3s var(--ease); }
-    .questions-list.is-fading { opacity: 0; }
+    .questions-list, #book-avail-note { transition: opacity 0.3s var(--ease); }
+    .questions-list.is-fading, #book-avail-note.is-fading { opacity: 0; }
 
     /* ── See more / unroll toggle ── */
     .see-more-toggle {
@@ -439,6 +439,16 @@
       transition: color 0.25s var(--ease);
     }
     .see-more-toggle:hover .see-more-text { color: var(--gold-light); }
+
+    /* Book availability "see more": mobile-only. On desktop the note is
+       always visible and the toggle is never shown. */
+    .book-avail-toggle { display: none; }
+    @media (max-width: 640px) {
+      .book-avail-inner { width: 100%; }
+      .book-avail-toggle { display: flex; margin-top: 1.4rem; }
+      .book-avail-toggle .see-more-arrow { width: 36px; height: 40px; }
+      #book-avail-note:not(.is-open) { display: none; }
+    }
 
     /* ── Scroll choreography (index only; hidden state applied by JS) ── */
     .scroll-part--hidden {
@@ -541,7 +551,25 @@
                 978-456-8296 ·
                 <a href="https://www.saintbenedict.com" target="_blank" rel="noopener">saintbenedict.com</a>
               </address>
-              <p class="book-avail-note">The book has gone through several editions; the page number is not always the same. You have the chapter numbers, and you should go through <em>all</em> of them "with a fine-toothed comb."</p>
+              <div id="book-avail-note">
+                <p class="book-avail-note">The book has gone through several editions; the page number is not always the same. You have the chapter numbers, and you should go through <em>all</em> of them "with a fine-toothed comb."</p>
+              </div>
+              <button type="button" class="see-more-toggle book-avail-toggle" aria-expanded="false" aria-controls="book-avail-note" title="Show the note about editions">
+                <svg class="see-more-arrow" viewBox="0 0 48 54" width="48" height="54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="arrow-gold-avail" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#d4b06a"/>
+                      <stop offset="0.55" stop-color="#b8963e"/>
+                      <stop offset="1" stop-color="#8f722a"/>
+                    </linearGradient>
+                  </defs>
+                  <line x1="24" y1="2" x2="24" y2="34" stroke="url(#arrow-gold-avail)" stroke-width="1.4"/>
+                  <rect x="20.6" y="9" width="6.8" height="6.8" transform="rotate(45 24 12.4)" fill="#b8963e"/>
+                  <path d="M9 30 L24 45 L39 30" stroke="url(#arrow-gold-avail)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13 37 L24 48 L35 37" stroke="#d4b06a" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+                </svg>
+                <span class="see-more-text">See more</span>
+              </button>
             </div>
           </div>
     </section>
@@ -635,6 +663,27 @@
         else { qlist.classList.add('is-fading'); setTimeout(swap, 300); }
         label.textContent = expanding ? 'See less' : 'See more';
         toggle.title = expanding ? 'Collapse the list' : 'Show the remaining questions';
+      });
+    }
+
+    /* ── Book availability note toggle (mobile-only; same look & fade) ── */
+    var availToggle = document.querySelector('.book-avail-toggle');
+    var availNote   = document.getElementById('book-avail-note');
+    if (availToggle && availNote) {
+      var availLabel = availToggle.querySelector('.see-more-text');
+      availToggle.addEventListener('click', function () {
+        var expanding = !availNote.classList.contains('is-open');
+        availToggle.setAttribute('aria-expanded', String(expanding));
+        var swap = function () {
+          availNote.classList.toggle('is-open', expanding);
+          /* force reflow so the opacity transition restarts cleanly */
+          void availNote.offsetWidth;
+          availNote.classList.remove('is-fading');
+        };
+        if (reduced) { swap(); }
+        else { availNote.classList.add('is-fading'); setTimeout(swap, 300); }
+        availLabel.textContent = expanding ? 'See less' : 'See more';
+        availToggle.title = expanding ? 'Hide the note about editions' : 'Show the note about editions';
       });
     }
 
