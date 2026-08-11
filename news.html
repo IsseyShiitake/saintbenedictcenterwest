@@ -610,7 +610,7 @@
         entries.forEach(function (entry) {
           if (entry.isIntersecting) reveal(entry.target);
         });
-      }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
       parts.forEach(function (p) { io.observe(p); });
 
       /* Fade out sections that have been scrolled past the top of viewport */
@@ -643,13 +643,12 @@
       onScroll();
     };
 
+    /* Apply hidden state before the next paint so the first section can
+       animate in on arrival; the IO fires on boot for anything visible. */
+    parts.forEach(function (p) { p.classList.add('scroll-part', 'scroll-part--hidden'); });
     if (window.requestAnimationFrame) {
-      requestAnimationFrame(function () {
-        parts.forEach(function (p) { p.classList.add('scroll-part', 'scroll-part--hidden'); });
-        requestAnimationFrame(boot);
-      });
+      requestAnimationFrame(function () { requestAnimationFrame(boot); });
     } else {
-      parts.forEach(function (p) { p.classList.add('scroll-part', 'scroll-part--hidden'); });
       boot();
     }
   })();
